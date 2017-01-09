@@ -45,9 +45,6 @@ class TemperatureInput extends React.Component {
     }
 
     handleChange(event) {
-        // this.setState({
-        //     value: event.target.value
-        // })
         this.props.onChange(event.target.value)
     }
 
@@ -69,20 +66,20 @@ class Calculator extends React.Component {
         super(props);
         this.state = {
             value: 0,
-            units: 'c'
+            scale: 'c'
         };
         this.handleCelsiusChange = this.handleCelsiusChange.bind(this);
         this.handleFahrenheitChange = this.handleFahrenheitChange.bind(this);
     }
 
-    handleCelsiusChange() {
+    handleCelsiusChange(value) {
         this.setState({
             scale: 'c',
             value
         })
     }
 
-    handleFahrenheitChange() {
+    handleFahrenheitChange(value) {
         this.setState({
             scale: 'f',
             value
@@ -90,11 +87,20 @@ class Calculator extends React.Component {
     }
 
     render() {
+        var scale = this.state.scale;
+        var value = this.state.value;
+        if (this.state.scale === 'c') {
+            var fTemp = tryConvert(value, 'c')
+            var cTemp = value;
+        } else if (this.state.scale === 'f') {
+            var fTemp = value;
+            var cTemp = tryConvert(value, 'f');
+        }
         return(
             <div>
-                <TemperatureInput units="Celsius" value={} onChange={this.handleCelsiusChange} />
-                <TemperatureInput units="Fahrenheit" value={} onChange={this.handleFahrenheitChange} />
-                <BoilingVerdict celsius={Number(1)} />
+                <TemperatureInput units="Celsius" value={cTemp} onChange={this.handleCelsiusChange} />
+                <TemperatureInput units="Fahrenheit" value={fTemp} onChange={this.handleFahrenheitChange} />
+                <BoilingVerdict celsius={Number(cTemp)} />
             </div>
         )
     }
