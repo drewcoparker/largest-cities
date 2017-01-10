@@ -1,0 +1,25 @@
+/*.city-card {
+    display: inline-block;
+    margin: 5px 5px 5px 10px;
+    background-color: #fff;
+}
+
+.map-tile {
+    padding: 5px;
+}
+
+body {
+    background-color: #cacaca;
+}*/
+
+
+.form-wrapper {
+    margin: 40px auto;
+    width: 500px;
+
+}
+
+.totaled {
+    font-weight: bold;
+    float: right;
+}

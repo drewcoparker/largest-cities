@@ -23,14 +23,26 @@ function tryConvert(value, unit) {
     }
 }
 
-function BoilingVerdict(props) {
-    if (props.celsius >= 100) {
+function FreezingVerdict(props) {
+    if (props.celsius <= 0) {
         return(
-            <p>The water would boil at {props.celsius}</p>
+            <p>Water would be frozen at {props.celsius}</p>
         )
     } else {
         return(
-            <p>The water would not boil at {props.celsius}</p>
+            <p>Water would be fluid at {props.celsius}</p>
+        )
+    }
+}
+
+function BoilingVerdict(props) {
+    if (props.celsius >= 100) {
+        return(
+            <p>Water would boil at {props.celsius}</p>
+        )
+    } else {
+        return(
+            <p>Water would not boil at {props.celsius}</p>
         )
     }
 }
@@ -54,7 +66,7 @@ class TemperatureInput extends React.Component {
         return(
             <div>
                 <label>Enter temperature in question in {units}</label>
-                <input placeholder="Temp" value={value} onChange={this.handleChange} />
+                <input value={value} onChange={this.handleChange} />
             </div>
         )
     }
@@ -101,6 +113,7 @@ class Calculator extends React.Component {
                 <TemperatureInput units="Celsius" value={cTemp} onChange={this.handleCelsiusChange} />
                 <TemperatureInput units="Fahrenheit" value={fTemp} onChange={this.handleFahrenheitChange} />
                 <BoilingVerdict celsius={Number(cTemp)} />
+                <FreezingVerdict celsius={Number(cTemp)} />
             </div>
         )
     }

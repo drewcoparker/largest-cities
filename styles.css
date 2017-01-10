@@ -1,13 +1,16 @@
-/*.city-card {
-    display: inline-block;
-    margin: 5px 5px 5px 10px;
-    background-color: #fff;
+
+#map {
+    height: 100vh;
+    width: 60%;
+    float: left;
 }
 
-.map-tile {
-    padding: 5px;
+#cities-wrapper {
+    padding-left: 10px;
+    width: 40%;
+    float: left;
 }
 
-body {
-    background-color: #cacaca;
-}*/
+.city-search-form {
+    margin-bottom: 10px;
+}
